@@ -1,0 +1,134 @@
+<resources
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:ignore="MissingTranslation" >
+	<string name="aboutLibraries_description_showIcon">true</string>
+	<string name="aboutLibraries_description_showVersion">true</string>
+	<string name="aboutLibraries_description_text">Official android client for the Hop'Edia database, the database contains data coming from https://openbeerdb.com</string>
+	<string name="define_emojione"></string>
+	<!-- Author section -->
+	<string name="library_emojione_author">Ranks.com Inc</string>
+	<string name="library_emojione_authorWebsite">http://www.ranks.com/</string>
+	<!-- Library section -->
+	<string name="library_emojione_libraryName">EmojiOne</string>
+	<string name="library_emojione_libraryDescription">EmojiOne™ is the open emoji standard</string>
+	<string name="library_emojione_libraryWebsite">http://emojione.com/</string>
+	<string name="library_emojione_libraryVersion">2.1.4</string>
+	<!-- OpenSource section -->
+	<string name="library_emojione_isOpenSource">true</string>
+	<string name="library_emojione_repositoryLink">https://github.com/Ranks/emojione/</string>
+	<!-- License section -->
+	<string name="library_emojione_licenseId">cc40</string>
+	<!-- Custom variables section -->
+	<string name="define_acra"></string>
+	<!-- Author section -->
+	<string name="library_acra_author">ACRA</string>
+	<string name="library_acra_authorWebsite">acra.ch</string>
+	<!-- Library section -->
+	<string name="library_acra_libraryName">ACRA</string>
+	<string name="library_acra_libraryDescription">ACRA is a library enabling Android Application to automatically post their crash reports to a GoogleDoc form. It is targeted to android applications developers to help them get data from their applications when they crash or behave erroneously.</string>
+	<string name="library_acra_libraryWebsite">acra.ch</string>
+	<string name="library_acra_libraryVersion">4.8.5</string>
+	<!-- OpenSource section -->
+	<string name="library_acra_isOpenSource">true</string>
+	<string name="library_acra_repositoryLink">https://github.com/ACRA/acra</string>
+	<!-- ClassPath for autoDetect section -->
+	<string name="library_acra_classPath">ch.acra</string>
+	<!-- License section -->
+	<string name="library_acra_licenseId">apache_2_0</string>
+	<!-- Custom variables section -->
+	<string name="define_barcodescanner"></string>
+	<!-- Author section -->
+	<string name="library_barcodescanner_author">Dushyanth Maguluru</string>
+	<string name="library_barcodescanner_authorWebsite">https://mdushyanth.wordpress.com</string>
+	<!-- Library section -->
+	<string name="library_barcodescanner_libraryName">Barcode Scanner</string>
+	<string name="library_barcodescanner_libraryDescription">Android library projects that provides easy to use and extensible Barcode Scanner views based on ZXing and ZBar.</string>
+	<string name="library_barcodescanner_libraryWebsite"></string>
+	<string name="library_barcodescanner_libraryVersion">1.8.4</string>
+	<!-- OpenSource section -->
+	<string name="library_barcodescanner_isOpenSource">true</string>
+	<string name="library_barcodescanner_repositoryLink">https://github.com/dm77/barcodescanner</string>
+	<!-- ClassPath for autoDetect section -->
+	<string name="library_barcodescanner_classPath">me.dm7.barcodescanner</string>
+	<!-- License section -->
+	<string name="library_barcodescanner_licenseId">apache_2_0</string>
+	<!-- Custom variables section -->
+
+	<string name="define_tinydb"></string>
+	<!-- Author section -->
+	<string name="library_tinydb_author">KC Ochibili</string>
+	<!-- Library section -->
+	<string name="library_tinydb_libraryName">TinyDB -- Android-Shared-Preferences-Turbo</string>
+	<string name="library_tinydb_libraryDescription">This class simplifies calls to SharedPreferences in a line of code. It can also do more like: saving a list of strings, integers and saving images. All in 1 line of code!</string>
+	<string name="library_tinydb_libraryWebsite"></string>
+	<string name="library_tinydb_libraryVersion"></string>
+	<!-- OpenSource section -->
+	<string name="library_tinydb_isOpenSource">true</string>
+	<string name="library_tinydb_repositoryLink">https://github.com/kcochibili/TinyDB--Android-Shared-Preferences-Turbo</string>
+	<!-- License section -->
+	<string name="library_tinydb_licenseId">apache_2_0</string>
+	<!-- Custom variables section -->
+
+	<string name="app_name">Hop\'Edia</string>
+	<string name="title_activity_base">BaseActivity</string>
+
+	<string name="search_hint_beer">Search a beer!</string>
+
+	<string name="edit">Edit</string>
+	<string name="save">Save</string>
+	<string name="share">Share</string>
+	<string name="drink_button_text_full">Drink it!</string>
+	<string name="drink_button_text_empty">Oops, I am drunk…</string>
+	<string name="sweet">Sweet</string>
+	<string name="bitter">Bitter</string>
+	<string name="acid">Acid</string>
+	<string name="fruit">Fruit</string>
+	<string name="alcohol">Alcohol</string>
+	<string name="other">Other</string>
+	<string name="login">Login</string>
+	<string name="loginFailed">Wrong Credentials, please try again</string>
+	<string name="review_added">Your review has been successfully sent</string>
+	<string name="review_failed">Error while submitting your review, please try again later</string>
+	<string name="beer_not_found">No beer found…</string>
+	<string name="share_beer">Just enjoyed this beer </string>
+	<string name="share_beer_menu">Share a beer</string>
+	<string name="scent">Scent: </string>
+	<string name="taste">Taste: </string>
+	<string name="add">Add it!</string>
+	<string name="beer_added">Beer added</string>
+	<string name="beer_add_failed">Beer insertion failure, try later or contact us</string>
+	<string name="beer_edit_failed">Beer edition failure, try later or contact us</string>
+	<string name="beer_edited">Beer successfully edited</string>
+	<string name="network_error">Server unreachable, verify your connection or try again later</string>
+	<string name="allow_barcode">Allow us to take pictures, if you want to scan the barcode</string>
+	<string name="password">Password</string>
+	<string name="email">Email</string>
+	<string name="ic_beer_full">Full Beer</string>
+	<string name="ic_send">Send</string>
+	<string name="ic_add_a_photo">Add a picture</string>
+	<string name="ic_grant_camera">Allow us to use the camera</string>
+	<string name="ic_show_more">Show more</string>
+	<string name="beer_name">Beer</string>
+	<string name="save_beer">Do you want to save your changes ?</string>
+	<string name="nothing_drank">You haven\'t drank anything</string>
+	<string name="add_beer">Add a beer</string>
+	<string name="cancel">Cancel</string>
+	<string name="recent_beer_deleted">Beer forgot</string>
+	<string name="crash_toast_text">Application crashed, sorry</string>
+	<string name="crash_dialog_text">Application has encountered a problem, do you agree to send us a report ?</string>
+	<string name="crash_dialog_comment_prompt">A comment ?</string>
+	<string name="crash_dialog_title">Something went wrong :/</string>
+	<string name="crash_user_email_label">Your email (optional): </string>
+	<string name="crash_dialog_ok_toast">Report sent, thanks a lot :)</string>
+	<string name="abv">Alcohol: %1$s%%</string>
+	<string name="ibu">IBU: %1$s</string>
+	<string name="dont_have_an_account_sign_up">Dont have an account? Sign-up !</string>
+	<string name="sign_up">Sign-Up</string>
+	<string name="signup_failed">Sign-up failed, have you a valid email and a more than 8 characters password ?</string>
+	<string name="signup_success">Sign-up success, a confirmation email has been sent to your email address !</string>
+	<string name="about">About</string>
+	<string name="recent_beers">Recent Beers</string>
+	<string name="invalidValue">You entered an invalid value, please review your edit before submitting</string>
+	<string name="a_remark">A comment about this beer?</string>
+
+</resources>

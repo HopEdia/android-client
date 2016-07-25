@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	app:layout_behavior="@string/appbar_scrolling_view_behavior"
+	tools:context=".SearchActivity"
+	tools:showIn="@layout/fragment_base_item"
+	android:layout_marginLeft="16dp"
+	android:layout_marginRight="16dp"
+	android:layout_marginTop="16dp"
+	>
+
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:id="@+id/beer_button_container"
+			android:clickable="true">
+			<ImageButton
+				android:layout_width="64dp"
+				android:layout_height="64dp"
+				android:layout_margin="8dp"
+				android:scaleType="centerCrop"
+				android:id="@+id/drink_button"
+				app:srcCompat="@drawable/ic_beer_full"
+				android:background="@android:color/transparent"
+				android:contentDescription="@string/ic_beer_full"/>
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="72dp"
+				android:textAppearance="@android:style/TextAppearance.Medium"
+				android:text="@string/drink_button_text_full"
+				android:id="@+id/drink_button_text"
+				android:gravity="center_vertical"
+				android:layout_marginLeft="8dp"
+				android:layout_toEndOf="@id/drink_button"/>
+			<ImageButton
+				android:visibility="gone"
+				android:id="@+id/send_review"
+				app:srcCompat="@drawable/ic_send_black"
+				android:background="@android:color/transparent"
+				android:scaleType="centerCrop"
+				android:contentDescription="@string/ic_send"
+				android:layout_width="48dp"
+				android:layout_height="48dp"
+				android:layout_margin="8dp"
+				android:layout_alignParentRight="true"
+				/>
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:visibility="gone"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/review_beer"
+			android:padding="8dp"
+			android:layout_below="@id/beer_button_container">
+			<View
+				android:layout_width="fill_parent"
+				android:layout_height="1dp"
+				android:background="#c0c0c0"
+				android:layout_below="@id/beer_button_container"
+				tools:ignore="NotSibling"/>
+			<android.support.v7.widget.AppCompatRatingBar
+				style="@style/RatingBar"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/beer_rating"
+				android:layout_below="@+id/beer_button_container"
+				tools:ignore="NotSibling"/>
+
+			<EditText
+				android:id="@+id/remark"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:maxLength="300"
+				android:lines="1"
+				android:hint="@string/a_remark"
+				android:layout_below="@id/beer_rating"/>
+			<!-- shop, search, etc.-->
+
+
+			<ExpandableListView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/packaging"
+				android:layout_below="@+id/remark"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"/>
+
+
+			<io.github.hopedia.ScentOrTasteView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/packaging"
+				android:id="@+id/taste"
+				app:name="@string/taste">
+
+			</io.github.hopedia.ScentOrTasteView>
+			<io.github.hopedia.ScentOrTasteView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/taste"
+				android:id="@+id/scent"
+				app:name="@string/scent">
+
+			</io.github.hopedia.ScentOrTasteView>
+
+
+		</RelativeLayout>
+	<View
+		android:layout_width="fill_parent"
+		android:layout_height="1dp"
+		android:background="#c0c0c0"
+		android:layout_below="@id/beer_button_container"
+		tools:ignore="NotSibling"/>
+	<android.support.v7.widget.RecyclerView
+		app:layout_behavior="@string/appbar_scrolling_view_behavior"
+		android:layout_below="@id/review_beer"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/reviews"/>
+
+
+
+</RelativeLayout>

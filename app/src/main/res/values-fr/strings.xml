@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="search_hint_beer">Cherche une bière!</string>
+	<string name="edit">Éditer</string>
+</resources>

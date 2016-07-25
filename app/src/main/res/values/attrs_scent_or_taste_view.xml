@@ -1,0 +1,6 @@
+<resources>
+	<declare-styleable name="ScentOrTasteView">
+		<attr name="name" format="string" />
+		<attr name="readOnly" format="boolean"/>
+	</declare-styleable>
+</resources>

@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+	<item
+		android:id="@+id/menuShareBeer"
+		app:showAsAction="never"
+		android:title="@string/share"/>
+
+	<item
+		android:id="@+id/edit"
+		app:showAsAction="never"
+		android:title="@string/edit"/>
+</menu>

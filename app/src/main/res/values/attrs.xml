@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="error">
+		<attr name="error" format="reference"/>
+	</declare-styleable>
+</resources>

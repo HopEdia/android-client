@@ -1,0 +1,67 @@
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:textColor="@color/textColorPrimary"
+		android:text=""
+		android:id="@+id/view_name"
+		android:layout_marginBottom="2dp"/>
+	<ImageButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/scent_or_taste_dropdown"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentEnd="true"
+		app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp"
+		android:contentDescription="@string/ic_show_more"
+		android:background="@android:color/transparent"/>
+	<TableLayout
+		android:visibility="gone"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/view_name"
+		android:id="@+id/tableSeekBar"
+		android:stretchColumns="4">
+		<io.github.hopedia.SeekBarScentOrTasteView
+			app:property="sweet"
+			android:id="@+id/sweet"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+		<io.github.hopedia.SeekBarScentOrTasteView
+			app:property="bitter"
+			android:id="@+id/bitter"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+		<io.github.hopedia.SeekBarScentOrTasteView
+			app:property="acid"
+			android:id="@+id/acid"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+		<io.github.hopedia.SeekBarScentOrTasteView
+			app:property="alcohol"
+			android:id="@+id/alcohol"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+		<io.github.hopedia.SeekBarScentOrTasteView
+			app:property="fruit"
+			android:id="@+id/fruit"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+		<io.github.hopedia.SeekBarScentOrTasteView
+			app:property="other"
+			android:id="@+id/other"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+	</TableLayout>
+
+
+
+
+</RelativeLayout>
+

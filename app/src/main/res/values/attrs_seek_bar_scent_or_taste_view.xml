@@ -1,0 +1,7 @@
+<resources>
+	<declare-styleable name="SeekBarScentOrTasteView">
+		<attr name="property" format="string" />
+		<attr name="value" format="integer" />
+		<attr name="ro" format="boolean" />
+	</declare-styleable>
+</resources>

@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_height="match_parent"
+             android:layout_width="match_parent"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+	>
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/list_toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?attr/actionBarSize"
+		android:background="?attr/colorPrimary"
+		android:elevation="4dp"
+		android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+		app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+		android:visibility="gone"/>
+
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:id="@+id/recent_drink_cardview_container"
+		tools:context=".fragments.BeerListFragment"
+		android:padding="16dp"
+		android:layout_below="@+id/list_toolbar">
+
+		<TextView
+			android:id="@+id/nothing_drinked"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:gravity="center"
+			android:text="@string/nothing_drank"/>
+		<android.support.v7.widget.RecyclerView
+			android:visibility="gone"
+			android:id="@+id/cardList"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			/>
+
+	</FrameLayout>
+</RelativeLayout>

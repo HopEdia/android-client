@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SearchView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/search_bar"
+            style="@style/searchBar"
+            android:clickable="true"
+            android:nextFocusUp="@id/search_bar"
+            android:nextFocusLeft="@id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="top|left"
+            android:elevation="4dp"
+            app:searchIcon="@drawable/ic_search_black_24dp"
+            app:closeIcon="@drawable/ic_clear_black_24dp"
+	app:searchHintIcon="@drawable/ic_access_time_black_24dp"/>

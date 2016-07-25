@@ -1,0 +1,73 @@
+<resources xmlns:android="http://schemas.android.com/tools">
+
+	<!-- Base application theme. -->
+
+	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+		<item name="android:textColorPrimary">@color/textColorPrimary</item>
+		<item name="android:textColorSecondary">@color/secondary_text_material_dark</item>
+		<item name="android:textColorPrimaryInverse">@color/primary_text_material_light</item>
+		<item name="android:textColorSecondaryInverse">@color/secondary_text_material_light</item>
+		<item name="error">@color/error</item>
+		<item name="android:colorBackground">@color/colorBackground</item>
+	</style>
+<!--
+	<style name="AppTheme.Dark" parent="AppTheme">
+		<! Customize your theme here.
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+		<item name="android:textColorPrimary">@color/textColorPrimary</item>
+		<item name="android:textColorSecondary">@color/secondary_text_material_dark</item>
+		<item name="android:textColorPrimaryInverse">@color/primary_text_material_light</item>
+		<item name="android:textColorSecondaryInverse">@color/secondary_text_material_light</item>
+	</style>-->
+
+	<style name="AppTheme.NoActionBar">
+		<item name="windowActionBar">false</item>
+		<item name="windowNoTitle">true</item>
+		<item name="android:colorBackground">@color/colorBackground</item>
+	</style>
+
+	<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar">
+		<item name="android:colorBackground">@color/colorBackground</item>
+		</style>
+
+	<style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+	<style name="RatingBar" parent="AppTheme">
+		<item name="colorControlNormal">@color/error</item>
+		<item name="colorControlActivated">@color/colorAccent</item>
+	</style>
+	<style name="searchBar">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_margin">0dp</item>
+		<item name="android:background">?attr/colorPrimary</item>
+		<item name="android:text">?android:attr/textColor</item>
+		<item name="android:editTextColor">?android:attr/textColor</item>
+		<item name="android:textColorHint">?android:attr/textColor</item>
+	</style>
+
+	<style name="beer_desc_prop">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+		<item name="android:textColor">?android:attr/textColorPrimary</item>
+	</style>
+
+	<style name="beer_desc_value">
+		<item name="android:gravity">right</item>
+		<item name="android:textAlignment">gravity</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+	</style>
+
+	<!--<style name="Theme.Beer.Dark" parent="Theme.AppCompat.NoActionBar"/>-->
+
+
+
+</resources>

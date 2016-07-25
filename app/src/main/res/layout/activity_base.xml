@@ -1,0 +1,61 @@
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:fitsSystemWindows="true"
+	android:id="@+id/base"
+	tools:context=".BaseActivity">
+	<!--<android.support.v7.widget.Toolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?attr/actionBarSize"
+		android:background="?attr/colorPrimary"
+		android:elevation="4dp"
+		android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+		app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+		android:visibility="gone"/>-->
+	<ViewStub
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:id="@+id/base_content" />
+
+	<!--
+	<LinearLayout
+		android:id="@+id/bottomButtons"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		>
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:layout_gravity="center_horizontal|bottom"
+			android:text="New Button"
+			android:id="@+id/button1"
+			style="@style/beer.ButtonBar" />
+
+		<ImageView
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:scaleType="fitXY"
+			android:src="@drawable/ic_beer_full"
+			android:layout_gravity="center"
+			style="@style/beer.ButtonBar"
+			android:clickable="true"/>
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:layout_gravity="center_horizontal|bottom"
+			android:text="New Button"
+			android:id="@+id/button3"
+			style="@style/beer.ButtonBar" />
+
+
+	</LinearLayout>-->
+
+
+</RelativeLayout>

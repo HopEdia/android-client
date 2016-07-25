@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="beer.ButtonBar" parent="@android:style/ButtonBar">
+		<item name="android:background">@color/colorPrimary</item>
+		<item name="android:divider">#000000</item>
+	</style>
+</resources>
