@@ -3,7 +3,7 @@
 	tools:ignore="MissingTranslation" >
 	<string name="aboutLibraries_description_showIcon">true</string>
 	<string name="aboutLibraries_description_showVersion">true</string>
-	<string name="aboutLibraries_description_text">Official android client for the Hop'Edia database, the database contains data coming from https://openbeerdb.com</string>
+	<string name="aboutLibraries_description_text">Official android client for the Hop\'Edia database, the database contains data coming from https://openbeerdb.com</string>
 	<string name="define_emojione"></string>
 	<!-- Author section -->
 	<string name="library_emojione_author">Ranks.com Inc</string>
