@@ -18,7 +18,7 @@ allprojects {
     }
 }
 ext {
-    supportLibVersion="24.1.0"
+    supportLibVersion="24.0.0"
 }
 
 task clean(type: Delete) {
