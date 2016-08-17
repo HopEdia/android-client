@@ -21,6 +21,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -93,7 +94,6 @@ public class BarcodeFragment extends Fragment implements ZXingScannerView.Result
 		activity = (BaseActivity) getActivity();
 
 		super.onViewCreated(view, savedInstanceState);
-
 		intent = new Intent(view.getContext(), SearchActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 		//TODO disable searchview on back
@@ -119,12 +119,15 @@ public class BarcodeFragment extends Fragment implements ZXingScannerView.Result
 		}
 		else {
 			final EditText searchOld = (EditText) view.findViewById(R.id.search_bar_old);
-			searchOld.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+			searchOld.setOnKeyListener(new TextView.OnKeyListener() {
 				@Override
-				public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-					if(event.getAction() == KeyEvent.KEYCODE_ENTER) {
+				public boolean onKey(View v, int keyCode, KeyEvent event) {
+					if (keyCode == EditorInfo.IME_ACTION_SEARCH ||
+							keyCode == EditorInfo.IME_ACTION_DONE ||
+							event.getAction() == KeyEvent.ACTION_DOWN &&
+									event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
 						intent.setAction(Intent.ACTION_SEARCH);
-						intent.putExtra("query", searchOld.getText());
+						intent.putExtra(SearchManager.QUERY, searchOld.getText().toString());
 						startActivity(intent);
 						return true;
 					}

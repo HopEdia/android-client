@@ -4,5 +4,6 @@
 	<dimen name="activity_vertical_margin">16dp</dimen>
 	<dimen name="fab_margin">16dp</dimen>
 	<dimen name="app_bar_height">180dp</dimen>
+	<dimen name="app_bar_height_marginStart">156dp</dimen>
 	<dimen name="beer_name_edit_width">80dp</dimen>
 </resources>

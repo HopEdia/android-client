@@ -2,5 +2,6 @@
 <resources>
 	<declare-styleable name="error">
 		<attr name="error" format="reference"/>
+		<attr name="textColor" format="reference"/>
 	</declare-styleable>
 </resources>

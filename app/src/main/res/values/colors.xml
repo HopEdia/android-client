@@ -6,6 +6,7 @@
 	<color name="colorAccent">#A4DC39</color>
 	<color name="text">#26290A</color>
 	<color name="error">#691E33</color>
+	<color name="textColor">@color/text</color>
 	<color name="textColorPrimary">@color/text</color>
 	<color name="textColorPrimaryInverse">#FFFFFF</color>
 	<color name="colorBackground">#F8FAE5</color>
