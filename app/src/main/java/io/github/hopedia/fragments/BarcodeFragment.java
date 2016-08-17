@@ -273,7 +273,12 @@ public class BarcodeFragment extends Fragment implements ZXingScannerView.Result
 		mScannerView.setOnLongClickListener(new View.OnLongClickListener() {
 			@Override
 			public boolean onLongClick(View v) {
-				mScannerView.toggleFlash();
+				try {
+					mScannerView.toggleFlash();
+				}
+				catch (java.lang.RuntimeException e) {
+					//doesn't have flash, ignore
+				}
 				return false;
 			}
 		});
