@@ -914,7 +914,10 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 			refresh=false;
 			swipeContainer.setRefreshing(false);
 		}
-		initValues(items[0], false);
+		if(items != null)
+			initValues(items[0], false);
+		else
+			Toast.makeText(getContext(), R.string.network_error, Toast.LENGTH_SHORT).show();
 	}
 
 
