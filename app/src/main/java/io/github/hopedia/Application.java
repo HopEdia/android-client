@@ -1,5 +1,6 @@
 package io.github.hopedia;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import org.acra.*;
@@ -46,8 +47,23 @@ public class Application extends android.app.Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		db=new DbHelper(this).getWritableDatabase();
+
+		if (getCurProcessName(getApplicationContext()).equals("io.github.hopedia")) {
+			db = new DbHelper(this).getWritableDatabase();
+		}
 	}
+
+	private String getCurProcessName(Context context) {
+		int pid = android.os.Process.myPid();
+		ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+		for (ActivityManager.RunningAppProcessInfo appProcess : activityManager.getRunningAppProcesses()) {
+			if (appProcess.pid == pid) {
+				return appProcess.processName;
+			}
+		}
+		return "";
+	}
+
 	@Override
 	protected void attachBaseContext(Context base) {
 		super.attachBaseContext(base);

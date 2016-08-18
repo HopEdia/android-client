@@ -64,12 +64,12 @@ public class ScentOrTasteView extends TableLayout {
 				if(deployed) {
 					deployed = !deployed;
 					seekBarTable.setVisibility(GONE);
-					dropdownButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_arrow_drop_down_black_24dp));
+					dropdownButton.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp);
 				}
 				else {
 					deployed = !deployed;
 					seekBarTable.setVisibility(VISIBLE);
-					dropdownButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_arrow_drop_up_black_24dp));
+					dropdownButton.setImageResource(R.drawable.ic_arrow_drop_up_black_24dp);
 
 				}
 			}
