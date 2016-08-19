@@ -281,7 +281,7 @@ public class BeerListFragment extends Fragment {
 		itemCount = dbHelper.countRecentBeers();
 		if(itemCount != 0) {
 			adapter.clearBeerList();
-			dbHelper.queryRecentBeers("10", offset.toString(), new DbListener<Cursor>() {
+			dbHelper.queryRecentBeers(null, offset.toString(), new DbListener<Cursor>() {
 				@Override
 				public void onPostAction(Cursor cursor) {
 					//cursor, by last beer added
@@ -290,14 +290,16 @@ public class BeerListFragment extends Fragment {
 							final Long entryId = cursor.getLong(cursor.getColumnIndexOrThrow(BaseColumns._ID));
 							final Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.RecentBeersModel.RecentBeerColumns.COLUMN_DATE_ADDED)));
 							String id = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.RecentBeersModel.RecentBeerColumns.COLUMN_NAME_BEER_ID));
-							new BeerGetter(getContext()).offlineSearchId(id, null, new BeerGetter.BeerListener<Beer>() {
-								@Override
-								public void onPostAction(Beer beer) {
-									adapter.addItem(beer, date, entryId);
-									adapter.notifyDataSetChanged();
+							if(id!= null) {
+								new BeerGetter(getContext()).offlineSearchId(id, null, new BeerGetter.BeerListener<Beer>() {
+									@Override
+									public void onPostAction(Beer beer) {
+										adapter.addItem(beer, date, entryId);
+										adapter.notifyDataSetChanged();
 //									listRoot.setRefreshing(false);
-								}
-							}, false);
+									}
+								}, false);
+							}
 						}
 					} catch (ParseException e) {
 						e.printStackTrace();

@@ -154,7 +154,11 @@ public abstract class NetRequest extends AsyncTask<NetRequest.Args, Void, NetReq
 						return result;
 					default:
 						conn.disconnect();
-						return new Result(generateString(conn.getInputStream()), false);
+						//between 400 and 599 (4xx and 5xx error codes)
+						if(status-400 < 200)
+							return new Result(generateString(conn.getErrorStream()), false);
+						else
+							return new Result(generateString(conn.getInputStream()), false);
 				}
 
 			} catch (MalformedURLException e) {

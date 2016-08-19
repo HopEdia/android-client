@@ -372,9 +372,6 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 
 		});
 
-
-
-		propertiesEdit.put("name", beernameEdit);
 		if(savedInstanceState != null)
 			new BeerGetter(getContext()).queryById(savedInstanceState.getString("id"), this);
 		else
@@ -401,7 +398,6 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 			item=new Beer();
 
 		collapsingToolbarLayout.setTitle(item.getName());
-		beernameEdit.setText(item.getName());
 
 		if (item instanceof Beer) {
 			type = "beer";
@@ -452,6 +448,7 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 				beernameEditSwitch.setDisplayedChild(beernameEditSwitch.indexOfChild(view.findViewById(R.id.beer_name_edit_auto)));
 
 				AutoCompleteTextView beernameEditAuto = (AutoCompleteTextView) view.findViewById(R.id.beer_name_edit_auto);
+				propertiesEdit.put("name", beernameEditAuto);
 				adapter = new SimpleCursorAdapter(getContext(), android.R.layout.simple_list_item_1, null,
 						new String[] { SearchManager.SUGGEST_COLUMN_TEXT_1 },
 						new int[] {android.R.id.text1},
@@ -493,6 +490,10 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 			else if (barcode && barcodeObj!=null)
 				((Beer) item).barcode = barcodeObj;
 
+			if(!newItem)
+				propertiesEdit.put("name", beernameEdit);
+
+			propertiesEdit.get("name").setText(item.getName());
 			if(init) {
 				if (beer.getAbv() != null) {
 					addPropRow(tl, "abv", beer.getAbv(), false);

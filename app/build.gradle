@@ -24,7 +24,7 @@ android {
 			resValue "string", "server_url", "http://server01-hopedia.rhcloud.com/"
 		}
 		debug {
-			resValue "string", "server_url", "http://server01-hopedia.rhcloud.com/"
+			resValue "string", "server_url", "http://192.168.1.109:8080"
 		}
 	}
 	productFlavors {
