@@ -25,7 +25,6 @@ public class Beer extends BaseItem {
 	public Review[] reviews;
 	public Image[] images;
 
-	public transient boolean image;
 	public transient String dbInsertTimestamp;
 
 	public Beer() {this.type = "beer";}

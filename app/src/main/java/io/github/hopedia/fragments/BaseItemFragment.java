@@ -55,6 +55,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Objects;
 
 import io.github.hopedia.Application;
 import io.github.hopedia.BaseActivity;
@@ -72,6 +73,7 @@ import io.github.hopedia.Schemas.Abv;
 import io.github.hopedia.Schemas.Barcode;
 import io.github.hopedia.Schemas.BaseItem;
 import io.github.hopedia.Schemas.Beer;
+import io.github.hopedia.Schemas.BeerEdit;
 import io.github.hopedia.Schemas.Ibu;
 import io.github.hopedia.Schemas.Image;
 import io.github.hopedia.Schemas.Name;
@@ -363,11 +365,15 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 				// Your code to refresh the list here.
 				// Make sure you call swipeContainer.setRefreshing(false)
 				// once the network request has completed successfully.
-				SearchCriteria criteria = new SearchCriteria();
-				criteria.id = item.get_id();
-				newItem =false;
-				refresh = true;
-				new SearchOnServer(getContext(), type, criteria, BaseItemFragment.this);
+				if(newItem)
+					swipeContainer.setRefreshing(false);
+				else {
+					SearchCriteria criteria = new SearchCriteria();
+					criteria.id = item.get_id();
+					newItem = false;
+					refresh = true;
+					new SearchOnServer(getContext(), type, criteria, BaseItemFragment.this);
+				}
 			}
 
 		});
@@ -516,11 +522,17 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 			else {
 				if (beer.getAbv() != null) {
 					propertiesEdit.get("abv").setText(beer.getAbv().toString());
-					properties.get("abv").setText(String.format(getString(getResources().getIdentifier("abv", "string", getActivity().getPackageName())), beer.getAbv().toString()));
+					if(properties.get("abv") !=null)
+						properties.get("abv").setText(String.format(getString(getResources().getIdentifier("abv", "string", getActivity().getPackageName())), beer.getAbv().toString()));
+					else
+						addPropRow(tl, "abv", beer.getAbv(), false);
 				}
 				if (beer.getIbu() != null) {
 					propertiesEdit.get("ibu").setText(beer.getIbu().toString());
-					properties.get("ibu").setText(String.format(getString(getResources().getIdentifier("ibu", "string", getActivity().getPackageName())), beer.getIbu().toString()));
+					if(properties.get("ibu")!= null)
+						properties.get("ibu").setText(String.format(getString(getResources().getIdentifier("ibu", "string", getActivity().getPackageName())), beer.getIbu().toString()));
+					else
+						addPropRow(tl, "ibu", beer.getIbu(), false);
 				}
 			}
 			if(beer.getReviews() != null) {
@@ -551,7 +563,7 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 					Toast toast = Toast.makeText(getContext(), getEditSuccess(), Toast.LENGTH_LONG);
 					toast.show();
 					final SearchCriteria criteria = getCriteria();
-					if(((Beer) editedProperties).image) {
+					if(((BeerEdit) editedProperties).image) {
 						Args args = new Args(result.content, insertImage.image, String.class, getResources().getInteger(R.integer.timeout), true);
 						new Put(getContext(), new NetRequest.TaskListener() {
 							@Override
@@ -718,11 +730,13 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 
 	private BaseItem getEditedProperties() {
 		BaseItem result = new BaseItem();
-		result.name= new Name[]{new Name(propertiesEdit.get("name").getText().toString())};
 		result._id = item._id;
 
+		if(!Objects.equals(propertiesEdit.get("name").getText().toString(), item.getName()) || newItem)
+			result.name= new Name[]{new Name(propertiesEdit.get("name").getText().toString())};
+
 		if (item instanceof Beer) {
-			Beer beerResult = new Beer(result);
+			BeerEdit beerResult = new BeerEdit(result);
 			try {
 				if (propertiesEdit.get("abv").getText().toString().length() != 0) {
 					beerResult.abv = new Abv[]{new Abv(Float.parseFloat(propertiesEdit.get("abv").getText().toString()))};
@@ -934,8 +948,14 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == Application.CAMERA_INTENT && resultCode == Activity.RESULT_OK) {
-			if(insertImage.image.exists() && !newItem) {
-				save();
+			if(insertImage.image.exists()) {
+				if(!newItem)
+					save();
+				else {
+					beerImage.setImageDrawable(Drawable.createFromPath(insertImage.image.getAbsolutePath()));
+					beerImage.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+					beerImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+				}
 			}
 		}
 
