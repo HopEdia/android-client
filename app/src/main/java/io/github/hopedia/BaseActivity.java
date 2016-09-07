@@ -1,10 +1,8 @@
 package io.github.hopedia;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -12,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 
-import com.mikepenz.iconics.context.IconicsContextWrapper;
-import com.mikepenz.iconics.context.IconicsLayoutInflater;
 /** Hop Edia android client
  Copyright (C) 2016  koko-ng <koko.fr.mu@gmail.com>
 
@@ -56,7 +52,7 @@ public class BaseActivity extends AppCompatActivity {
 	public void onActivityResult(int requestCode, int resultCode,Intent data) {
 		//super.onActivityResult(requestCode, resultCode, data);
 		Log.e("LOG", "HZGH");
-		if(requestCode == Application.LOGIN_INTENT) {
+		if(requestCode == ApplicationHopedia.LOGIN_INTENT) {
 			// code 1 = take picture
 			if (resultCode == RESULT_OK) {
 				am.tl.onFinished(new Post.Result(null, true));

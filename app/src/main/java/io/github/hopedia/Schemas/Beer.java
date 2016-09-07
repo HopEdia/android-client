@@ -1,4 +1,8 @@
 package io.github.hopedia.Schemas;
+
+import android.app.Activity;
+import android.content.Context;
+
 /** Hop Edia android client
  Copyright (C) 2016  koko-ng <koko.fr.mu@gmail.com>
 
@@ -135,7 +139,7 @@ public class Beer extends BaseItem {
 		return reviews;
 	}
 
-	public void setImage(String image) {
+	public void setImage(Context context, String image) {
 		if(getImage()==null)
 			this.images = new Image[]{new Image()};
 		getImage().set_value(image);

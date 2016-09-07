@@ -15,7 +15,7 @@ package io.github.hopedia.Schemas;
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-public class newReview {
+public class NewReview {
 	public Review review;
 	public String beerId;
 }

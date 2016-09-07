@@ -99,9 +99,6 @@ public class SuggestionsProvider extends ContentProvider {
 			return null;
 		}
 
-		SearchOnServer.SearchCriteria criteria = new SearchOnServer.SearchCriteria();
-		criteria.name_completion=query;
-
 		//String query = uri.getLastPathSegment().toLowerCase();
 		try {
 			// Avoid the problem of HTTPRequest1 finishing after HTTPRequest2

@@ -1,11 +1,15 @@
 package io.github.hopedia.Schemas;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Environment;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -40,7 +44,16 @@ public class Image extends Modifications<String> {
 	private transient Drawable drawable;
 	public Integer maxSize;
 	public transient File image;
-	private final int[] sizes=new int[]{144, 360, 480, 720, 1080};
+	private final static int[] sizes=new int[]{144, 360, 480, 720, 1080};
+
+	public Image() {
+		super();
+	}
+
+	public Image(String val) {
+		set_value(val);
+	}
+
 
 	public interface ImageReady {
 		void onLoaded(Drawable image);
@@ -84,7 +97,10 @@ public class Image extends Modifications<String> {
 				try {
 					file = createFile(ctx, get_value());
 
-					file.createNewFile();
+					if(!file.createNewFile()) {
+						file.delete();
+						file.createNewFile();
+					}
 					FileOutputStream fo = new FileOutputStream(file);
 					fo.write(bytes.toByteArray());
 					fo.close();
@@ -94,8 +110,12 @@ public class Image extends Modifications<String> {
 			}
 		});
 		int i = 0;
-		int size = sizes[i];
-		while (size < maxSize) {
+		int size = Image.sizes[i];
+
+		DisplayMetrics displaymetrics = new DisplayMetrics();
+		((WindowManager) ctx.getApplicationContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(displaymetrics);;
+		Integer maxDisplaySize = displaymetrics.widthPixels/2;
+		while (size < maxSize && size < maxDisplaySize) {
 			i += 1;
 			size = sizes[i];
 		}

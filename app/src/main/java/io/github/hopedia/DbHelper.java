@@ -45,9 +45,6 @@ public class DbHelper extends SQLiteOpenHelper {
 	protected static final String TIMESTAMP_TYPE = " TIMESTAMP DEFAULT CURRENT_TIMESTAMP";
 	protected static final String COMMA_SEP = ",";
 	private final Context ctx;
-	private SQLiteDatabase db;
-
-
 
 	public static abstract class DbListener<Result> {
 		public abstract void onPostAction(Result result);
@@ -82,7 +79,7 @@ public class DbHelper extends SQLiteOpenHelper {
 		onUpgrade(db, oldVersion, newVersion);
 	}
 	public SQLiteDatabase getDb() {
-		return ((Application) ctx.getApplicationContext()).db;
+		return ((ApplicationHopedia) ctx.getApplicationContext()).getDb();
 	}
 	private abstract class AsyncOps<Params, Result> extends AsyncTask<Params, Void, Result> {
 		private DbListener listener;
@@ -96,7 +93,7 @@ public class DbHelper extends SQLiteOpenHelper {
 				listener.onPostAction(o);
 		}
 	}
-	private class QueryArgs {
+	private static class QueryArgs {
 		public boolean distinct;
 		public String table;
 		public String[] columns;
@@ -143,7 +140,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 	}
 
-	private class InsertArgs {
+	private static class InsertArgs {
 		public String table;
 		public String nullColumnHack;
 		public ContentValues values;
@@ -171,7 +168,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 	}
 
-	private class UpdateArgs {
+	private static class UpdateArgs {
 		public String table;
 		public ContentValues values;
 		public String whereClause;
@@ -202,7 +199,7 @@ public class DbHelper extends SQLiteOpenHelper {
 		}
 	}
 
-	private class DeleteArgs {
+	private static class DeleteArgs {
 		public String table;
 		public String whereClause;
 		public String[] whereArgs;
@@ -299,7 +296,7 @@ public class DbHelper extends SQLiteOpenHelper {
 	/**
 	 * Created by koko-ng on 08.06.16.
 	 */
-	public final class RecentBeersModel {
+	public static final class RecentBeersModel {
 
 		// To prevent someone from accidentally instantiating the contract class,
 		// give it an empty constructor.
@@ -315,7 +312,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
 	//Beers
-	public final class BeerTableModel {
+	public final static class BeerTableModel {
 
 		// To prevent someone from accidentally instantiating the contract class,
 		// give it an empty constructor.
@@ -379,7 +376,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 					@Override
 					public void onPostAction(Cursor cursor) {
-						ArrayList<Beer> beers = new ArrayList<>();
+						ArrayList<Beer> beers = new ArrayList<Beer>();
 						//TODO if barcode, get barcode from db
 						try {
 							while (cursor.moveToNext()) {
@@ -409,7 +406,7 @@ public class DbHelper extends SQLiteOpenHelper {
 									if(l.contains(BeerTableModel.BeerColumns.COLUMN_CAT_ID))
 										beer.setCategories(cursor.getString(cursor.getColumnIndexOrThrow(BeerTableModel.BeerColumns.COLUMN_CAT_ID)));
 									if(l.contains(BeerTableModel.BeerColumns.COLUMN_IMAGE_ID))
-										beer.setImage(cursor.getString(cursor.getColumnIndexOrThrow(BeerTableModel.BeerColumns.COLUMN_IMAGE_ID)));
+										beer.setImage(ctx, cursor.getString(cursor.getColumnIndexOrThrow(BeerTableModel.BeerColumns.COLUMN_IMAGE_ID)));
 									if(l.contains(BeerTableModel.BeerColumns.INSERTED_DATE))
 										beer.dbInsertTimestamp = cursor.getString(cursor.getColumnIndexOrThrow(BeerTableModel.BeerColumns.INSERTED_DATE));
 									beers.add(beer);

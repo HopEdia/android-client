@@ -39,7 +39,7 @@ import org.acra.annotation.*;
 		resDialogOkToast = R.string.crash_dialog_ok_toast // optional. displays a Toast message when the user accepts to send a report.
 )
 
-public class Application extends android.app.Application {
+public class ApplicationHopedia extends android.app.Application {
 	public SQLiteDatabase db;
 	public static final int LOGIN_INTENT = 1;
 	public static final int CAMERA_INTENT = 2;
@@ -70,5 +70,11 @@ public class Application extends android.app.Application {
 
 		// The following line triggers the initialization of ACRA
 		ACRA.init(this);
+	}
+
+	public SQLiteDatabase getDb() {
+		if(db==null)
+			db=new DbHelper(this).getWritableDatabase();
+		return db;
 	}
 }

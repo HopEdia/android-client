@@ -101,7 +101,7 @@ public class AccountManager {
 		}
 		//set as member -> must be called by BaseActivity onActivityResult
 		tl = taskListener;
-		((Activity) ctx).startActivityForResult(intent, Application.LOGIN_INTENT);
+		((Activity) ctx).startActivityForResult(intent, ApplicationHopedia.LOGIN_INTENT);
 	}
 
 	public void loginServer(final Post.TaskListener taskListener) {

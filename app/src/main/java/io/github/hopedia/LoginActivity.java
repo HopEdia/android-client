@@ -54,8 +54,6 @@ public class LoginActivity extends BaseActivity {
 		tinyDb = new TinyDB(LoginActivity.this);
 		emailField.setText(tinyDb.getString("email"));
 
-		InputFilter[] lengthFilter = new InputFilter[1];
-		lengthFilter[0] = new InputFilter.LengthFilter(25);
 		//lengthFilter[1] = new InputFilter.
 
 		loginButton.setOnClickListener(new View.OnClickListener() {

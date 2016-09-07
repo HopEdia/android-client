@@ -18,7 +18,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.FileProvider;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
@@ -51,16 +50,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.mikepenz.iconics.utils.Utils;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Objects;
 
-import io.github.hopedia.Application;
+import io.github.hopedia.ApplicationHopedia;
 import io.github.hopedia.BaseActivity;
 import io.github.hopedia.BeerGetter;
 import io.github.hopedia.DbHelper;
+import io.github.hopedia.HopEdiaUtils;
 import io.github.hopedia.NetRequest;
 import io.github.hopedia.NetRequest.Args;
 import io.github.hopedia.NetRequest.Result;
@@ -79,7 +81,7 @@ import io.github.hopedia.Schemas.Image;
 import io.github.hopedia.Schemas.Name;
 import io.github.hopedia.Schemas.Remark;
 import io.github.hopedia.Schemas.Review;
-import io.github.hopedia.Schemas.newReview;
+import io.github.hopedia.Schemas.NewReview;
 import io.github.hopedia.SearchOnServer;
 import io.github.hopedia.SearchOnServer.SearchCriteria;
 import io.github.hopedia.SearchOnServer.onItem;
@@ -112,11 +114,6 @@ import io.github.hopedia.SuggestionsProvider.QueryFinished;
  */
 //TODO <> -> BaseItemFragment
 public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, BeerGetter.BeerListener<Beer> {
-	// TODO: Rename parameter arguments, choose names that match
-	// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-	private static final String ARG_item = "item";
-	private static final int REQUEST_IMAGE_CAPTURE = 1;
-	private static int LOADER_ID;
 
 	// TODO: Rename and change types of parameters
 	private BaseItem item;
@@ -576,7 +573,7 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 						new SearchOnServer(getContext(), type, criteria, BaseItemFragment.this);
 					}
 				} else {
-					if(result.content==Post.NETWORK_ERROR) {
+					if(result.content==NetRequest.NETWORK_ERROR) {
 						Toast toast = Toast.makeText(getContext(), R.string.network_error, Toast.LENGTH_LONG);
 						toast.show();
 					}
@@ -653,7 +650,7 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 
 	//instance of beer, brewery, etc. TODO
 	private void sendReview() {
-		final newReview review = new newReview();
+		final NewReview review = new NewReview();
 		review.beerId = item._id;
 		review.review = new Review();
 		review.review.scent = scent.getValues();
@@ -732,7 +729,7 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 		BaseItem result = new BaseItem();
 		result._id = item._id;
 
-		if(!Objects.equals(propertiesEdit.get("name").getText().toString(), item.getName()) || newItem)
+		if(!HopEdiaUtils.objectsEquals(propertiesEdit.get("name").getText().toString(), item.getName()) || newItem)
 			result.name= new Name[]{new Name(propertiesEdit.get("name").getText().toString())};
 
 		if (item instanceof Beer) {
@@ -768,8 +765,6 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 		editOn = a;
 		//ImageButton editSaveButton = (ImageButton) view.findViewById(R.id.editItem);
 		//ImageButton cancelButton = (ImageButton) view.findViewById(R.id.cancel_button);
-		RelativeLayout content = (RelativeLayout) view.findViewById(R.id.collapsing_toolbar_content);
-
 		if (editOn) {
 			activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 			if(editSaveMenu != null) {
@@ -947,8 +942,8 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(requestCode == Application.CAMERA_INTENT && resultCode == Activity.RESULT_OK) {
-			if(insertImage.image.exists()) {
+		if(requestCode == ApplicationHopedia.CAMERA_INTENT && resultCode == Activity.RESULT_OK) {
+			if(insertImage != null && insertImage.image.exists()) {
 				if(!newItem)
 					save();
 				else {
@@ -979,7 +974,7 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 						"io.github.hopedia.imageprovider",
 						photoFile);
 				takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-				startActivityForResult(takePictureIntent, Application.CAMERA_INTENT);
+				startActivityForResult(takePictureIntent, ApplicationHopedia.CAMERA_INTENT);
 			}
 		}
 	}

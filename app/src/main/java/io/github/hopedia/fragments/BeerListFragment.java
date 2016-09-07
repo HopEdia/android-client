@@ -169,7 +169,6 @@ public class BeerListFragment extends Fragment {
 			mIth = new ItemTouchHelper(
 					new ItemTouchHelper.SimpleCallback(0,
 							ItemTouchHelper.LEFT) {
-						DbHelper dbHelper=new DbHelper(getContext());
 						public boolean onMove(RecyclerView recyclerView,
 						                      RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
 							return false;// true if moved, false otherwise
