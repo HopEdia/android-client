@@ -77,10 +77,13 @@ public class ScentOrTasteView extends TableLayout {
 	}
 	private void initValues(ScentOrTaste item) {
 		fields = io.github.hopedia.Schemas.ScentOrTaste.class.getFields();
+		SeekBarScentOrTasteView linked_element;
 		for (Field field : fields) {
-			//if(field.get)
+			linked_element = (SeekBarScentOrTasteView) view.findViewById(getResources().getIdentifier(field.getName(), "id", ctx.getPackageName()));
+			if(linked_element==null)
+				continue;
 			//map containing every seekbar by property name
-			map.put(field.getName(), (SeekBarScentOrTasteView) view.findViewById(getResources().getIdentifier(field.getName(), "id", ctx.getPackageName())) );
+			map.put(field.getName(),  linked_element);
 			try {
 				if(field.isSynthetic()){
 					continue;

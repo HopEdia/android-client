@@ -5,6 +5,8 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -55,6 +57,7 @@ import com.mikepenz.iconics.utils.Utils;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -973,6 +976,11 @@ public class BaseItemFragment extends Fragment implements onItem<BaseItem[]>, Be
 				Uri photoURI = FileProvider.getUriForFile(getContext(),
 						"io.github.hopedia.imageprovider",
 						photoFile);
+				List<ResolveInfo> resInfoList = getContext().getPackageManager().queryIntentActivities(takePictureIntent, PackageManager.MATCH_DEFAULT_ONLY);
+				for (ResolveInfo resolveInfo : resInfoList) {
+					String packageName = resolveInfo.activityInfo.packageName;
+					getContext().grantUriPermission(packageName, photoURI, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+				}
 				takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
 				startActivityForResult(takePictureIntent, ApplicationHopedia.CAMERA_INTENT);
 			}

@@ -126,14 +126,14 @@ public abstract class NetRequest extends AsyncTask<NetRequest.Args, Void, NetReq
 				}
 				conn.connect();
 				int status = conn.getResponseCode();
-
+				Result result;
 
 				switch (status) {
 					case 200:
 					case 201:
 					case 304:
 
-						Result result = new Result(null, true);
+						result = new Result(null, true);
 
 						if(params[0].cookies) {
 							Map<String, List<String>> headerFields = conn.getHeaderFields();
@@ -153,12 +153,15 @@ public abstract class NetRequest extends AsyncTask<NetRequest.Args, Void, NetReq
 						conn.disconnect();
 						return result;
 					default:
-						conn.disconnect();
 						//between 400 and 599 (4xx and 5xx error codes)
-						if(status-400 < 200)
-							return new Result(generateString(conn.getErrorStream()), false);
-						else
-							return new Result(generateString(conn.getInputStream()), false);
+						if(status-400 < 200) {
+							result = new Result(generateString(conn.getErrorStream()), false);
+						}
+						else {
+							result = new Result(generateString(conn.getInputStream()), false);
+						}
+						conn.disconnect();
+						return result;
 				}
 
 			} catch (MalformedURLException e) {
