@@ -66,6 +66,16 @@ public class BarcodeFragment extends Fragment implements ZXingScannerView.Result
 	private View view;
 	private BaseActivity activity;
 	private Intent intent;
+	private static final String TAG = MainActivity.class.getSimpleName();
+
+	private static final int ZXING_CAMERA_PERMISSION = 1;
+	private ZXingScannerView mScannerView;
+	private boolean permissionAsked = false;
+
+	private SearchView searchBar;
+
+	static final String BARCODE = "io.github.hopedia.BARCODE";
+	private ViewGroup contentFrame;
 
 
 	public BarcodeFragment() {
@@ -206,17 +216,6 @@ public class BarcodeFragment extends Fragment implements ZXingScannerView.Result
 		void onFragmentInteraction(Uri uri);
 	}
 
-	private static final String TAG = MainActivity.class.getSimpleName();
-
-	private static final int ZXING_CAMERA_PERMISSION = 1;
-	private ZXingScannerView mScannerView;
-	private boolean permissionAsked = false;
-
-	private SearchView searchBar;
-
-	static final String BARCODE = "io.github.hopedia.BARCODE";
-	private ViewGroup contentFrame;
-
 	
 	public void setupUI(final View view) {
 		//Set up touch listener for non-text box views to hide keyboard.
@@ -313,6 +312,8 @@ public class BarcodeFragment extends Fragment implements ZXingScannerView.Result
 		intent.setAction(BARCODE);
 		intent.putExtra("barcode", rawResult.getText());
 		intent.putExtra("barcodeFormat",rawResult.getBarcodeFormat().toString());
+		if(mScannerView != null)
+			mScannerView.stopCamera();
 		startActivity(intent);
 
 		// Note:

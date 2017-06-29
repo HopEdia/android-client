@@ -154,7 +154,6 @@ public class AccountManager {
 	}
 
 	private long diffDate(Date issue) {
-		//TODO
 		long diff =  new Date().getTime() - issue.getTime();
 		return diff / (24 * 60 * 60 * 1000);
 	}

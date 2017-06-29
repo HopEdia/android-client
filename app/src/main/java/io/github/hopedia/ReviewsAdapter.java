@@ -59,7 +59,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewVi
 		holder.mReview=reviews.get(position);
 		// Check if an existing view is being reused, otherwise inflate the view
 
-		TextView username = (TextView) holder.mView.findViewById(R.id.review_username);
+		//TextView username = (TextView) holder.mView.findViewById(R.id.review_username);
 		//username.setText(holder.mReview.getUser());
 
 		TextView date = (TextView) holder.mView.findViewById(R.id.review_date);
